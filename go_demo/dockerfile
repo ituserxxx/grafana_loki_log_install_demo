@@ -1,0 +1,24 @@
+# 使用官方的 Golang 镜像作为构建阶段
+FROM golang:1.21.4 AS builder
+
+# 设置工作目录
+WORKDIR /
+
+# 将本地代码复制到容器中
+COPY ./go.mod .
+COPY ./main.go .
+
+# 编译 Go 应用程序
+RUN go build -o demo_app
+
+# 使用一个更小的基础镜像来运行应用程序
+FROM alpine:latest
+
+# 设置工作目录
+WORKDIR /root/
+
+# 从构建阶段复制可执行文件到当前阶段
+COPY --from=builder /demo_app .
+
+# 运行可执行文件
+CMD ["./demo_app"]
