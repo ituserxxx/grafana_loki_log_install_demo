@@ -7,6 +7,7 @@ import (
 
 /*
 go build -o testgo main.go
+mkdir log
 nohup ./testgo > log/a.log 2>&1 &
 docker  rm promtail
 

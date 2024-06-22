@@ -51,8 +51,17 @@ go build -o testgo main.go
 nohup ./testgo > log/a.log 2>&1 &
 ```
 
-进入 promtail 目录下
+进入 go_demo 同级目录下，启动 promtail 服务推送日志到 grafana loki 中
 
+promtail 配置如下所示
+![Alt text](sm4.jpg)
+```
+docker run  --name promtail \
+-v ./promtail/config.yml:/etc/promtail/config.yml \
+-v ./go_demo/log:/var/log \
+grafana/promtail:3.0.0
+```
 
-
+然后如图操作查看日志
+![Alt text](sm4.jpg)
 
