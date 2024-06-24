@@ -2,6 +2,8 @@
 
 官方文档：https://grafana.com/docs/loki/latest/get-started/quick-start/
 
+基础版请查看：https://github.com/ituserxxx/Loki.git
+
 #### 下载 配置文件
 ```
 https://github.com/grafana/loki/blob/main/examples/getting-started/docker-compose.yaml
