@@ -2,6 +2,7 @@
 
 官方文档：https://grafana.com/docs/loki/latest/get-started/quick-start/
 
+
 基础版请查看：https://github.com/ituserxxx/Loki.git
 
 #### 下载 配置文件
@@ -9,10 +10,10 @@
 https://github.com/grafana/loki/blob/main/examples/getting-started/docker-compose.yaml
 https://github.com/grafana/loki/blob/main/examples/getting-started/loki-config.yaml
 https://github.com/grafana/loki/blob/main/examples/getting-started/alloy-local-config.yaml
-
 ```
 #### 直接 docker compose 执行
 
+**注意必须版本都保持一致**
 ```
 docker compose up -d
 ```
@@ -58,10 +59,10 @@ nohup ./testgo > log/a.log 2>&1 &
 promtail 配置如下所示
 ![Alt text](sm4.jpg)
 ```
-docker run  --name promtail \
+docker run  -it --name promtail \
 -v ./promtail/config.yml:/etc/promtail/config.yml \
 -v ./go_demo/log:/var/log \
-grafana/promtail:3.0.0
+grafana/promtail:3.0.0  --config.file=/etc/promtail/config.yml
 ```
 
 然后如图操作查看日志
